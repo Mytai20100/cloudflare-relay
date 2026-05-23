@@ -1,14 +1,5 @@
 export default {
   async fetch(req) {
-    const url = new URL(req.url);
-
-    if (url.pathname !== "/api/relay") {
-      return new Response(JSON.stringify({ error: "Not found" }), {
-        status: 404,
-        headers: { "content-type": "application/json" },
-      });
-    }
-
     const target = req.headers.get("x-relay-target");
     const relayPath = req.headers.get("x-relay-path") || "/";
 
